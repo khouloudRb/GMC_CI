@@ -1,7 +1,7 @@
 version: "3.3"
 services:
     client:
-        image: khouloud123456/frontend:localhst
+        image: khouloud123456/frontend:localhost
         ports :
             - "3000:3000"
         container_name: frontend
