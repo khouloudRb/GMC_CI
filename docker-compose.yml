@@ -12,9 +12,4 @@ services:
         ports: 
             - "5000:5000"
         container_name: backend
-        
-networks:
-    default:
-    # Use a custom driver
-        driver: "bridge"
     
