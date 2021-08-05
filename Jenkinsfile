@@ -5,7 +5,7 @@ pipeline {
         stage('Build and Run') {
             steps {
                 sh 'docker-compose -f docker-compose.yml up -d'
-                sh 'sleep 40' 
+                sh 'sleep 30' 
             }
         }
         
