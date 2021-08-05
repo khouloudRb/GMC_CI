@@ -11,7 +11,7 @@ pipeline {
         
         stage('Unit tests') {
             steps {
-                sh 'docker exec frontend npm test'
+                sh 'docker exec frontend npm test&'
                 sh 'sleep 10' 
             }
         }
