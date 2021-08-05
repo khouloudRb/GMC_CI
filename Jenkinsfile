@@ -12,7 +12,7 @@ pipeline {
         stage('Unit tests') {
             steps {
                 sh 'docker exec frontend npm test&'
-                sh 'sleep 10' 
+                sh 'sleep 5' 
             }
         }
         stage('Katalon tests') {
@@ -26,5 +26,6 @@ pipeline {
      post {
             always {
                 sh 'docker-compose -f docker-compose.yml down'
-        }}
+            }
+     }
 }
