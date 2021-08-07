@@ -2,11 +2,6 @@ pipeline {
     agent any
     stages {
         
-        stage('Start SonarQube') {
-            steps {
-                sh 'docker-compose -f tools.yml up -d'
-            }
-        }
         
         stage('Build and Run') {
             steps {
@@ -21,6 +16,12 @@ pipeline {
             }
         }
         
+        stage('Code quality inspection'){
+            steps {
+                build job: 'Sonarqube'
+            }
+        }
+        
         stage('Katalon tests') {
             tools {
                 jdk 'jdk8'
@@ -30,13 +31,7 @@ pipeline {
             }
         }
         
-        stage('Code quality inspection'){
-            steps {
-                sh 'sleep 10'
-                build job: 'Sonarqube'
-            }
-        }
-     
+    
     }
      post {
             always {
