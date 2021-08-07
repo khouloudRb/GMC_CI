@@ -2,6 +2,12 @@ pipeline {
     agent any
     stages {
         
+        stage('Start SonarQube') {
+            steps {
+                sh 'docker-compose -f tools.yml up -d'
+            }
+        }
+        
         stage('Build and Run') {
             steps {
                 sh 'docker-compose -f docker-compose.yml up -d'
