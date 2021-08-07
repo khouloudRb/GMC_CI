@@ -22,6 +22,9 @@ pipeline {
         }
         
         stage('Katalon tests') {
+            tools {
+                jdk 'jdk8'
+            }
             steps {
                 build job: 'katalon2'
             }
