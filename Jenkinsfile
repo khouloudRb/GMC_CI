@@ -15,18 +15,18 @@ pipeline {
             }
         }
         
-        stage('Katalon tests') {
-            steps {
-                build job: 'katalon2'
-            }
-        }
         stage('Code quality inspection'){
             steps {
                 build job: 'Sonarqube'
             }
         }
-       
         
+        stage('Katalon tests') {
+            steps {
+                build job: 'katalon2'
+            }
+        }
+     
     }
      post {
             always {
