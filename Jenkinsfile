@@ -20,6 +20,11 @@ pipeline {
                 build job: 'katalon2'
             }
         }
+        stage('Code quality inspection'){
+            steps {
+                build job: 'Sonarqube'
+            }
+        }
        
         
     }
