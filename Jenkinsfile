@@ -21,18 +21,19 @@ pipeline {
             }
         }
         
-        stage('Code quality inspection'){
-            steps {
-                build job: 'Sonarqube'
-            }
-        }
-        
         stage('Katalon tests') {
             tools {
                 jdk 'jdk8'
             }
             steps {
                 build job: 'katalon2'
+            }
+        }
+        
+        stage('Code quality inspection'){
+            steps {
+                sh 'sleep 10'
+                build job: 'Sonarqube'
             }
         }
      
