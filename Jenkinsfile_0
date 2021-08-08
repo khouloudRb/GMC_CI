@@ -37,16 +37,16 @@ pipeline {
             parallel {
                 stage('start front') {
                     steps {
-                        dir('./Movies_APP/frontend') {
-                        sh 'yarn start&'
+                        dir('./Movies_App/frontend') {
+                        sh 'npm start&'
                         }
                     }
                 }
                 
                 stage('start back') {
                     steps {
-                        dir('./Movies_APP') {
-                        sh 'yarn start&'
+                        dir('./Movies_App') {
+                        sh 'npm start&'
                         }
                     }
                 }
