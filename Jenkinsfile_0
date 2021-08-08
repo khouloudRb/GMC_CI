@@ -6,7 +6,6 @@ pipeline {
     }
     stages {
         
-        
         stage('cloning') {
             steps {
             cleanWs()
@@ -17,7 +16,7 @@ pipeline {
             }
         }
         
-         stage('Build and Run') {
+        stage('Build') {
             parallel {
                 stage('install front dependencies') {
                     steps {
@@ -35,6 +34,10 @@ pipeline {
                     }
                 }
             }
+            
+        }
+        
+        stage ('Run'){
             steps {
                 sh 'npm run dev&'
                 sh 'sleep 30'
