@@ -7,15 +7,43 @@ pipeline {
     stages {
         
         
-        stage('Build and Run') {
+        stage('cloning') {
             steps {
             cleanWs()
                 // We need to explicitly checkout from SCM here
                 checkout scm
                 echo "Building ${env.JOB_NAME}..."
                 sh 'git clone https://github.com/khouloudRb/Movies_App.git'
-                sh 'npm start&'
-                sh 'sleep 30'
+            }
+        }
+        
+         stage('Build and Run') {
+            steps {
+            parallel(
+                a: {
+                     dir('./Movies_APP/frontend') {
+                     sh 'npm install'
+                     }
+                 },
+                 b: {
+                      dir('./Movies_APP') {
+                      sh 'npm install'
+                     }
+                 }
+             ) 
+             parallel(
+                c: {
+                     dir('./Movies_APP/frontend') {
+                     sh 'npm start&'
+                     }
+                 },
+                 d: {
+                      dir('./Movies_APP') {
+                      sh 'node server.js&'
+                     }
+                 }
+             )
+             sh 'sleep 30'
             }
         }
         
