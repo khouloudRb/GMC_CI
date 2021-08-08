@@ -38,7 +38,7 @@ pipeline {
                 stage('start front') {
                     steps {
                         dir('./Movies_APP/frontend') {
-                        sh 'npm start'
+                        sh 'npm start&'
                         }
                     }
                 }
@@ -46,7 +46,7 @@ pipeline {
                 stage('start back') {
                     steps {
                         dir('./Movies_APP') {
-                        sh 'node server.js'
+                        sh 'node server.js&'
                         }
                     }
                 }
