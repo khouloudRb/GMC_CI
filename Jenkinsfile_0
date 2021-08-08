@@ -20,16 +20,13 @@ pipeline {
             parallel {
                 stage('install front dependencies') {
                     steps {
-                        sh 'cd ./Movies_APP/frontend'
-                        sh 'npm install'
-                        }
+                        sh 'cd ./Movies_App/frontend && npm install'
+                    }
                 }
                 
                 stage('install back dependencies') {
-                    steps {
-                       sh 'cd ./Movies_APP'
-                       sh 'npm install'
-                        
+                     steps {
+                       sh 'cd ./Movies_App && npm install'
                     }
                 }
             }
