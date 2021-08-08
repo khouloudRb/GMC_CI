@@ -4,16 +4,16 @@
 run the command : sudo docker-compose -f tools.yml 
 add JDK installations in Jenkins : jdk 11 and jdk 8
 
-Docker images : 
+1. Docker images : 
 backend : https://hub.docker.com/repository/docker/khouloud123456/backend 
 frontend  : https://hub.docker.com/repository/docker/khouloud123456/frontend
 
-stage('Unit tests') : using Jest and Enzyme 
+2. stage('Unit tests') : using Jest and Enzyme 
 Two basic unit tests were created in Movies_App/frontend/src/__tests__
 
-stage('Code quality inspection')
-a Jenkins freestyle job named Sonarqube must be created using the plugin SonarQube Scanner for Jenkins.
-Configuration : 
+3. stage('Code quality inspection')
+- a Jenkins freestyle job named Sonarqube must be created using the plugin SonarQube Scanner for Jenkins.
+- Configuration : 
 Source code Management : https://github.com/khouloudRb/Movies_App.git
 JDK : jdk11
 Analysis properties : 
@@ -23,10 +23,9 @@ sonar.login=admin
 sonar.password=admin
 sonar.sources=/var/lib/jenkins/workspace/Sonarqube
 
-stage('Katalon tests') : 
-a jenkins freestyle job named Katalon2 must be created using the plugin 
-Katalon TestOps Plugin.
-Configuration :
+4. stage('Katalon tests') : 
+- a jenkins freestyle job named Katalon2 must be created using the plugin Katalon TestOps Plugin.
+- Configuration :
 Source code Management : https://github.com/khouloudRb/katalon2.git 
 Build section : 
 Download Katalon Studio version : 8.0.5
