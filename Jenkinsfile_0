@@ -11,8 +11,9 @@ pipeline {
         
         stage('Unit tests') {
             steps {
-                sh 'cd ./frontend'
-                sh 'npm test&'
+                dir('./Movies_APP/frontend') {
+                    sh 'npm test&'
+                }
             }
         }
         
