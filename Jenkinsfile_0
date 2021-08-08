@@ -18,21 +18,26 @@ pipeline {
         }
         
          stage('Build and Run') {
+            parallel {
+                stage('install front dependencies') {
+                    steps {
+                        dir('./Movies_APP/frontend') {
+                        sh 'npm install'
+                        }
+                    }
+                }
+                
+                stage('install back dependencies') {
+                    steps {
+                        dir('./Movies_APP') {
+                        sh 'npm install'
+                        }
+                    }
+                }
+            }
             steps {
-            parallel(
-                a: {
-                     dir('./Movies_APP/frontend') {
-                     sh 'npm install'
-                     }
-                 },
-                 b: {
-                      dir('./Movies_APP') {
-                      sh 'npm install'
-                     }
-                 }
-             ) 
-             sh 'npm run dev&'
-             sh 'sleep 30'
+                sh 'npm run dev&'
+                sh 'sleep 30'
             }
         }
         
