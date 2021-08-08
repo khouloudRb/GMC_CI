@@ -27,7 +27,7 @@ Two basic unit tests were created in Movies_App/frontend/src/__tests__
 * a jenkins freestyle job named Katalon2 must be created using the plugin Katalon TestOps Plugin.
 * Configuration :
  * Source code Management : https://github.com/khouloudRb/katalon2.git 
- * Build section : 
-  * Download Katalon Studio version : 8.0.5
-  * Command arguments : 
+ * *Build section* : 
+  - Download Katalon Studio version : 8.0.5
+  - Command arguments : 
 -retry=0 -apiKey="*****" -testSuitePath="Test Suites/Simple test suite" -executionProfile="default" -browserType="Chrome (headless)" --config -webui.autoUpdateDrivers=true 
