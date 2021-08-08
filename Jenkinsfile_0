@@ -23,7 +23,6 @@ pipeline {
                         sh 'cd ./Movies_APP/frontend'
                         sh 'npm install'
                         }
-                    }
                 }
                 
                 stage('install back dependencies') {
