@@ -5,8 +5,8 @@
 * add JDK installations in Jenkins : jdk 11 and jdk 8
 
 # 1. Docker images : 
-backend : https://hub.docker.com/repository/docker/khouloud123456/backend 
-frontend  : https://hub.docker.com/repository/docker/khouloud123456/frontend
+* backend : https://hub.docker.com/repository/docker/khouloud123456/backend 
+* frontend  : https://hub.docker.com/repository/docker/khouloud123456/frontend
 
 # 2. stage('Unit tests') : using Jest and Enzyme 
 Two basic unit tests were created in Movies_App/frontend/src/__tests__
@@ -14,9 +14,9 @@ Two basic unit tests were created in Movies_App/frontend/src/__tests__
 # 3. stage('Code quality inspection')
 - a Jenkins freestyle job named Sonarqube must be created using the plugin SonarQube Scanner for Jenkins.
 - Configuration : 
-Source code Management : https://github.com/khouloudRb/Movies_App.git
-JDK : jdk11
-Analysis properties : 
+  Source code Management : https://github.com/khouloudRb/Movies_App.git
+  JDK : jdk11
+  Analysis properties : 
 sonar.host.url=http://localhost:9000
 sonar.projectKey=React_APP
 sonar.login=admin
