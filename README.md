@@ -12,14 +12,14 @@
 Two basic unit tests were created in Movies_App/frontend/src/__tests__
 
 # 3. stage('Code quality inspection')
-- a Jenkins freestyle job named Sonarqube must be created using the plugin SonarQube Scanner for Jenkins.
-- Configuration : 
-  Source code Management : https://github.com/khouloudRb/Movies_App.git
-  JDK : jdk11
-  Analysis properties : 
-sonar.host.url=http://localhost:9000
-sonar.projectKey=React_APP
-sonar.login=admin
+* a Jenkins freestyle job named Sonarqube must be created using the plugin SonarQube Scanner for Jenkins.
+* Configuration : 
+  * Source code Management : https://github.com/khouloudRb/Movies_App.git
+  * JDK : jdk11
+  * Analysis properties : 
+- sonar.host.url=http://localhost:9000
+- sonar.projectKey=React_APP
+- sonar.login=admin
 sonar.password=admin
 sonar.sources=/var/lib/jenkins/workspace/Sonarqube
 
