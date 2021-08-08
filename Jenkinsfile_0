@@ -1,0 +1,43 @@
+pipeline {
+    agent any
+    stages {
+        
+        
+        stage('Build and Run') {
+            steps {
+                sh 'git clone https://github.com/khouloudRb/Movies_App.git'
+            }
+        }
+        
+        stage('Unit tests') {
+            steps {
+                sh 'cd frontend'
+                sh 'npm test&'
+            }
+        }
+        
+        stage('Code quality inspection'){
+            steps {
+                build job: 'Sonarqube'
+            }
+        }
+        
+        stage('Katalon tests') {
+            tools {
+                jdk 'jdk8'
+            }
+            steps {
+                build job: 'katalon2'
+            }
+        }
+        
+    
+    }
+     post {
+            always {
+                 emailext body: '''$DEFAULT_CONTENT''',
+                 recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
+                 subject: '''$DEFAULT_SUBJECT'''
+            }
+     }
+}
