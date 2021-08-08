@@ -20,7 +20,7 @@ pipeline {
             parallel {
                 stage('install front dependencies') {
                     steps {
-                        sh 'cd ./Movies_App/frontend && npm install'
+                        sh 'cd ./Movies_App/frontend && yarn install'
                     }
                 }
                 
