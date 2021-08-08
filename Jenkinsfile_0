@@ -38,9 +38,22 @@ pipeline {
         }
         
         stage ('Run'){
-            steps {
-                sh 'npm run dev&'
-                sh 'sleep 30'
+            parallel {
+                stage('start front') {
+                    steps {
+                        dir('./Movies_APP/frontend') {
+                        sh 'npm start'
+                        }
+                    }
+                }
+                
+                stage('start back') {
+                    steps {
+                        dir('./Movies_APP') {
+                        sh 'node server.js'
+                        }
+                    }
+                }
             }
         }
         
@@ -63,6 +76,7 @@ pipeline {
                 jdk 'jdk8'
             }
             steps {
+                sh 'sleep 30'
                 build job: 'katalon2'
             }
         }
