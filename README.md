@@ -17,11 +17,11 @@ Two basic unit tests were created in Movies_App/frontend/src/__tests__
   * Source code Management : https://github.com/khouloudRb/Movies_App.git
   * JDK : jdk11
   * Analysis properties : 
-  sonar.host.url=http://localhost:9000
-  sonar.projectKey=React_APP
-  sonar.login=admin
-  sonar.password=admin
-  sonar.sources=/var/lib/jenkins/workspace/Sonarqube
+  - sonar.host.url=http://localhost:9000
+  - sonar.projectKey=React_APP
+  - sonar.login=admin
+  - sonar.password=admin
+  - sonar.sources=/var/lib/jenkins/workspace/Sonarqube
 
 # 4. stage('Katalon tests') : 
 * a jenkins freestyle job named Katalon2 must be created using the plugin Katalon TestOps Plugin.
