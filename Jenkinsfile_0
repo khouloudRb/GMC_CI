@@ -31,18 +31,7 @@ pipeline {
                      }
                  }
              ) 
-             parallel(
-                c: {
-                     dir('./Movies_APP/frontend') {
-                     sh 'npm start&'
-                     }
-                 },
-                 d: {
-                      dir('./Movies_APP') {
-                      sh 'node server.js&'
-                     }
-                 }
-             )
+             sh 'npm run dev&'
              sh 'sleep 30'
             }
         }
