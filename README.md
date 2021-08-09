@@ -1,7 +1,7 @@
 # GMC_CI
 
 - Prerequisite : 
-* run the command : sudo docker-compose -f tools.yml 
+* run the command : sudo docker-compose -f tools.yml up
 * add JDK installations in Jenkins : jdk 11 and jdk 8
 
 # 1. Docker images : 
