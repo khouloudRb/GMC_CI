@@ -9,22 +9,21 @@ pipeline {
         stage('cloning') {
             steps {
             cleanWs()
-                // We need to explicitly checkout from SCM here
-                checkout scm
-                echo "Building ${env.JOB_NAME}..."
-                sh 'git clone https://github.com/khouloudRb/Movies_App.git'
+            checkout scm
+            echo "Building ${env.JOB_NAME}..."
+            sh 'git clone https://github.com/khouloudRb/Movies_App.git'
             }
         }
         
         stage('Build') {
             parallel {
-                stage('install front dependencies') {
+                stage('install frontend dependencies') {
                     steps {
                         sh 'cd ./Movies_App/frontend && yarn install'
                     }
                 }
                 
-                stage('install back dependencies') {
+                stage('install backend dependencies') {
                      steps {
                        sh 'cd ./Movies_App && npm install'
                     }
@@ -35,7 +34,7 @@ pipeline {
         
         stage ('Run'){
             parallel {
-                stage('start front') {
+                stage('start frontend') {
                     steps {
                         dir('./Movies_App/frontend') {
                         sh 'npm start&'
@@ -43,10 +42,10 @@ pipeline {
                     }
                 }
                 
-                stage('start back') {
+                stage('start backend') {
                     steps {
                         dir('./Movies_App') {
-                        sh 'npm start&'
+                        sh 'node server.js&'
                         }
                     }
                 }
@@ -63,6 +62,7 @@ pipeline {
         
         stage('Code quality inspection'){
             steps {
+                echo 'code quality analysis'
                 build job: 'Sonarqube'
             }
         }
